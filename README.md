@@ -1,7 +1,11 @@
 # Semantic Plagiarism Detection Agent
-
 A lightweight, robust Natural Language Processing (NLP) system designed to detect semantic plagiarism, structural sentence rewrites, and synonym swapping where traditional exact-match checkers fail.
 
+## Team Details:
+- **Team Name**: The Pioneer's
+- **Members:** Shaik Rehan, P.Sirisha
+- **Problem Statement** : Problem 5: Semantic Plagiarism Detection Agent
+- **Submitted at** : Codethon - HITAM 
 ## Features
 - **Sentence Tokenization**: Regex-based sentence boundary detection and normalization.
 - **Hybrid Semantic Vectorizer**: Combines lexical word frequencies with sub-word character 3-grams to capture morphological root similarity and synonym shifts.
