@@ -5,7 +5,6 @@ from collections import Counter
 
 st.set_page_config(
     page_title="Semantic Plagiarism Detection Agent",
-    page_icon="🛡️",
     layout="wide"
 )
 
@@ -47,20 +46,20 @@ def calculate_sentence_similarity(sent1, sent2):
 
 # --- Streamlit UI ---
 
-st.title("🛡️ Semantic Plagiarism Detection Agent")
+st.title("Semantic Plagiarism Detection Agent")
 st.caption("AI-powered academic integrity engine detecting structural rewrites, synonym swaps, and paraphrased theft.")
 st.divider()
 
 col1, col2 = st.columns(2)
 with col1:
-    st.subheader("📄 Reference / Source Text")
+    st.subheader("Reference / Source Text")
     ref_text = st.text_area("Paste original or published content:", height=200, key="ref")
 
 with col2:
-    st.subheader("🔍 Suspect Text")
+    st.subheader("Suspect Text")
     sus_text = st.text_area("Paste candidate or submitted content:", height=200, key="sus")
 
-st.sidebar.header("⚙️ Agent Settings")
+st.sidebar.header("Agent Settings")
 threshold = st.sidebar.slider("Paraphrase Detection Sensitivity", 0.30, 0.90, 0.55, 0.01)
 
 st.sidebar.markdown("""
@@ -70,7 +69,7 @@ st.sidebar.markdown("""
 * **< 0.50:** Broad thematic alignment.
 """)
 
-if st.button("🚀 Run Semantic Audit", type="primary", use_container_width=True):
+if st.button("Run Semantic Audit", type="primary", use_container_width=True):
     if not ref_text.strip() or not sus_text.strip():
         st.error("Please paste content into both Reference and Suspect text areas to analyze.")
     else:
@@ -105,7 +104,7 @@ if st.button("🚀 Run Semantic Audit", type="primary", use_container_width=True
                 plagiarism_percentage = (flagged_count / total_suspect) * 100
                 avg_confidence = (sum(c["score"] for c in flagged_cases) / len(flagged_cases)) if flagged_cases else 0.0
 
-                st.subheader("📊 Audit Analytics")
+                st.subheader("Audit Analytics")
                 m1, m2, m3, m4 = st.columns(4)
                 m1.metric("Plagiarism Index", f"{plagiarism_percentage:.1f}%")
                 m2.metric("Flagged Sentences", f"{flagged_count} / {total_suspect}")
@@ -119,7 +118,7 @@ if st.button("🚀 Run Semantic Audit", type="primary", use_container_width=True
                     m4.success("Integrity: Clean")
 
                 st.divider()
-                st.subheader("🔍 Paraphrase Matching Sections")
+                st.subheader("Paraphrase Matching Sections")
                 if not flagged_cases:
                     st.success("No sections breached the semantic threshold.")
                 else:
@@ -134,7 +133,7 @@ if st.button("🚀 Run Semantic Audit", type="primary", use_container_width=True
                                 st.error(case["suspect"])
 
                 st.divider()
-                st.subheader("📑 Formal Audit Report")
+                st.subheader("Formal Audit Report")
                 report = f"""==================================================
         SEMANTIC PLAGIARISM AUDIT REPORT
 ==================================================
@@ -153,4 +152,4 @@ Flagged Paraphrase Matches:
                     report += f"\n  Source : {c['reference']}\n"
 
                 st.text_area("Audit Log Output", report, height=160)
-                st.download_button("⬇️ Download Audit Report (.txt)", report, file_name="semantic_audit_report.txt")
+                st.download_button("Download Audit Report (.txt)", report, file_name="semantic_audit_report.txt")
